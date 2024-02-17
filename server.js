@@ -26,6 +26,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
+
+app.get('/',(req,res)=>
+{
+    res.send("Hello World");
+})
 // this middleware is used to parse the json data from requests and it should be applied at the beginning of your middleware stack to ensure it's available for all subsequent route handlers.
 
 app.use(express.json());
