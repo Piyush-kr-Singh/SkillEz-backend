@@ -17,55 +17,35 @@ const connectDb = require("./utils/db");
 const errorMiddleWare = require('./middlewares/error-middleware');
 const PORT = 5000;
 
-// tackling the cors policy  
+// Update the origin to 'https://skillez.in'
 const corsOptions = {
-    origin: "http://localhost:5173",
-    methods: "GET , POST, PUT, PATCH,DELETE,HEAD",
+    origin: "https://skillez.in",
+    methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
     credentials: true
-}
+};
 app.use(cors(corsOptions));
 
-
-
-app.get('/',(req,res)=>
-{
+app.get('/', (req, res) => {
     res.send("Hello World");
-})
-// this middleware is used to parse the json data from requests and it should be applied at the beginning of your middleware stack to ensure it's available for all subsequent route handlers.
+});
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 
-// Mount the Router : To use the router in your main Express app, you can "mount" it at a specific URL prefix
 app.use("/api/auth", authRouter);
 app.use("/api/form", contactRoute);
 app.use("/api/data", serviceRoute);
 
-
-// service form route
 app.use("/api/service", webdevFormRoute);
-
-// resume review form route
 app.use("/api/service", resumeReviewFormRoute);
-
-// resume build form route
 app.use("/api/service", resumeBuildFormRoute);
-
-// resume build form route
 app.use("/api/service", mockInterviewFormRoute);
 
-
-
-// lets define the admin route
 app.use("/api/admin", adminRoute);
-
-// contact admin message route
 app.use("/api/admin", adminContactRoute);
 
-// this is the error middleware
 app.use(errorMiddleWare);
 
-// newsLetter route
 app.use("/api/newsletter", newsLetterRoute);
 
 connectDb()
@@ -77,4 +57,3 @@ connectDb()
     .catch((error) => {
         console.error("Error connecting to the database:", error);
     });
-
