@@ -19,8 +19,7 @@ const PORT = 5000;
 
 // Update the origin to 'https://skillez.in'
 const corsOptions = {
-    // origin: "https://skillez.in",
-    origin: "http://localhost:5173",
+    origin: "https://www.skillez.in", // Update the origin to the correct domain
     methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
     credentials: true
 };
