@@ -18,8 +18,17 @@ const errorMiddleWare = require('./middlewares/error-middleware');
 const PORT = 5000;
 
 // Update the origin to 'https://skillez.in'
+// const corsOptions = {
+//     origin: "https://www.skillez.in", // Update the origin to the correct domain
+//     methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
+//     credentials: true
+// };
+// app.use(cors(corsOptions));
+
+
+
 const corsOptions = {
-    origin: "https://www.skillez.in", // Update the origin to the correct domain
+    origin: "*", // Allow requests from any origin
     methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
     credentials: true
 };
