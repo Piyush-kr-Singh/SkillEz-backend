@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 const userOtpSend = async (req, res) => {
     const { email } = req.body;
-
+ 
     if (!email) {
         return res.status(400).json({ error: "Please Enter Your Email" });
     }

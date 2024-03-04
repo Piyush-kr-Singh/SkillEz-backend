@@ -9,8 +9,8 @@ const bcrypt = require("bcryptjs");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD
+        user: 'skillez.in@gmail.com',
+        pass: 'csahlbyibwggirqo'
     }
 });
 
@@ -40,7 +40,7 @@ router.post("/sendpasswordlink", async (req, res) => {
         await userfind.save();
 
         const mailOptions = {
-            from: process.env.EMAIL,
+            from: 'skillez.in@gmail.com',
             to: email,
             subject: "Sending Email For New Password : ",
             text: `Your new password is: ${newPassword}`
