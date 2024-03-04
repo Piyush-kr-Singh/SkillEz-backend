@@ -4,8 +4,11 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: 'raunaksingh4099@gmail.com',
-        pass: 'udnccrfcdonhzicj'
+        // user: 'raunaksingh4099@gmail.com',
+        // pass: 'udnccrfcdonhzicj'
+
+        user : 'skillez.in@gmail.com',
+        pass : 'csahlbyibwggirqo'
     }
 });
 
@@ -35,9 +38,9 @@ const userOtpSend = async (req, res) => {
         }
 
         const mailOptions = {
-            from: 'raunaksingh4099@gmail.com',
+            from: 'skillez.in@gmail.com',
             to: email,
-            subject: "Sending Email For Otp Validation",
+            subject: "Sending Email For Otp Verification",
             text: `OTP:- ${OTP}`,
         };
 
