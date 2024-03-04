@@ -1,7 +1,16 @@
-const User = require("../models/user-models")
+const User = require("../models/user-models");
 const bcrypt = require('bcrypt');
+const userotp = require("../models/userOtp");
+const nodemailer = require("nodemailer");
 
-// home logic 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: 'raunaksingh4099@gmail.com',
+        pass: 'udnccrfcdonhzicj'
+    }
+});
+
 const home = async (req, res) => {
     try {
         res.status(200).send("Welcome to Sujal Kingdom using controllers");
@@ -10,8 +19,6 @@ const home = async (req, res) => {
     }
 };
 
-
-// user register loggic 
 const register = async (req, res) => {
     try {
         // console.log(req.body)
@@ -37,18 +44,17 @@ const register = async (req, res) => {
     }
 }
 
+
 // user login logic 
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        // console.log(req.body);
         const userExist = await User.findOne({ email });
 
         if (!userExist) {
             return res.status(400).json({ message: "Invalid Credentials" });
         }
 
-        //const user = await bcrypt.compare(password, userExist.password);
         const user = await userExist.comparePassword(password);
 
         if (user) {
@@ -65,18 +71,16 @@ const login = async (req, res) => {
     }
 };
 
-
 // to send the user data - user login
 const user = async (req, res) => {
     try {
         const userData = req.user;
-        // console.log(userData);
-        return res.status(200).json({ userData })
+        return res.status(200).json({ userData });
     } catch (error) {
-        console.log(`error from the user route ${error}`);
+        console.log(`Error from the user route: ${error}`);
     }
-}
+};
 
 
 
-module.exports = { home, register, login, user };
+module.exports = { home, register, login, user};

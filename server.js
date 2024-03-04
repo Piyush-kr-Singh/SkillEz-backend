@@ -14,7 +14,7 @@ const resumeReviewFormRoute = require("./router/resume-review-router");
 const resumeBuildFormRoute = require("./router/resume-build-router");
 const mockInterviewFormRoute = require("./router/mockInterview-router");
 const newsLetterRoute = require("./router/newsLetter-router");
-// const forgotPasswordRoute = require('./router/forgotPassword-router');
+const forgotPasswordRoute = require('./router/forgotPassword-router');
 
 const PORT = process.env.PORT || 5000; // Use the provided port or 5000 as a default
 
@@ -48,7 +48,7 @@ app.use("/api/admin", adminContactRoute);
 app.use("/api/newsletter", newsLetterRoute);
 
 // Add the route for forgot password
-// app.use("/api/forgotpassword", forgotPasswordRoute);
+app.use("/api/forgotpassword", forgotPasswordRoute);
 
 app.use(errorMiddleWare);
 
