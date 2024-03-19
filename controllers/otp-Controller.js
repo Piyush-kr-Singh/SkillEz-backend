@@ -79,6 +79,6 @@ const otpVerification = async (req, res) => {
         console.error("Error during OTP verification:", error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
-};
+};    
 
 module.exports = { userOtpSend, otpVerification };
